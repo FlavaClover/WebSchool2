@@ -5,6 +5,15 @@
 
 
 {% block Content %}
-	<h1> Главная </h1>
+	<div class="div-login">
+		<h1> Добро пожаловать! </h1>
+		<form method="post"> 
+			{% csrf_token %}
+				{{ LoginForm.as_p }}
+			<input type="submit" value="Вход">	
+		</form>
+
+	</div>
+
 {% endblock %}
 
