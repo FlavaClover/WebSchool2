@@ -16,7 +16,7 @@ class Student(models.Model):
         return self.surname + ' ' + self.name + ' ' + self.patronymic
 
     def __str__(self):
-        return f'Id: {self.student_id}, {self.full_name()}, Возраст: {self.age}, Логин: {self.user.username}'
+        return f'Id: {self.student_id}, {self.full_name}, Возраст: {self.age}, Логин: {self.user.username}'
 
     class Meta:
         ordering = ['name', 'surname', 'patronymic']
