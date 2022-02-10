@@ -12,5 +12,20 @@ class StudentInline(admin.StackedInline):
 class UserStudentAdmin(BaseUserAdmin):
     inlines = (StudentInline,)
 
+
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'surname', 'name', 'patronymic', 'age')
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+
 admin.site.unregister(User)
+admin.site.register(Student, StudentAdmin)
 admin.site.register(User, UserStudentAdmin)
