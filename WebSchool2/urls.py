@@ -19,6 +19,6 @@ from school import views as school_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', school_views.index),
+    path('', school_views.view_login),
 ]
 
