@@ -22,6 +22,15 @@ class StudentTestCase(TestCase):
         with self.assertRaises(Exception):
             Student.objects.create(name='Zaurbek', surname='Tedeev', patronymic='Georgievich', age=19, user=User.objects.create(username='liling', password='123'))
 
+    def test_create_invalid_student(self):
+        with self.assertRaises(Exception):
+            Student.objects.create(name='Zaurbek', surname='Tedeev', patronymic='Georgievich', age=-19, user=User.objects.create(username='liling', password='123'))
+        with self.assertRaises(Exception):
+            Student.objects.create(name='Zaurbek', surname='', patronymic='', age=19, user=User.objects.create(username='liling', password='123'))
+        with self.assertRaises(Exception):
+            Student.objects.create(name='', surname='Tedeev', patronymic='Georgievich', age=19, user=User.objects.create(username='liling', password='123'))
+
+
 class RoutingTestCase(TestCase):
     def setUp(self):
         self.client = Client()

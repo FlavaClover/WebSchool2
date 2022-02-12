@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from school.validators import validate_age
 
 
 class Student(models.Model):
@@ -8,7 +9,7 @@ class Student(models.Model):
     name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
     patronymic = models.CharField(max_length=50, null=True)
-    age = models.IntegerField()
+    age = models.IntegerField(validators=[validate_age])
 
     @property
     def full_name(self):
