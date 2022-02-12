@@ -2,6 +2,8 @@ from django.test import TestCase
 from school.models import Student
 from django.contrib.auth.models import User
 from django.test import Client
+from django.core.exceptions import ValidationError
+import school.validators as validators
 
 
 class StudentTestCase(TestCase):
@@ -29,3 +31,10 @@ class RoutingTestCase(TestCase):
 
         self.assertEqual(login_response.status_code, 200)
 
+
+class ValidatorsTestCase(TestCase):
+    def test_age_validator(self):
+        age = -18
+
+        with self.assertRaises(ValidationError):
+            validators.validate_age(age)
