@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from school import views as school_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', school_views.view_login),
+    path('', school_views.view_login, name='index'),
+    path('account/', school_views.view_account, name='account'),
+    path('account/logout/', school_views.view_logout, name='logout'),
 ]
 

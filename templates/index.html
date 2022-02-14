@@ -11,6 +11,7 @@
 			{% csrf_token %}
 				{{ LoginForm.as_p }}
 			<input type="submit" value="Вход">	
+			<p> {{ msg }} </p>
 		</form>
 
 	</div>
